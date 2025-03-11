@@ -146,6 +146,18 @@ venv.bak/
 # mkdocs documentation
 /site
 
+# Ignore virtual environment
+venv/
+__pycache__/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore IDE settings
+.vscode/
+.idea/
+
 # mypy
 .mypy_cache/
 .dmypy.json
