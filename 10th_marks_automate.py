@@ -33,6 +33,8 @@ class marks:
         
 
         self.browser = webdriver.Chrome(options=options)
+        print(f"[INFO] Opening: {self.results_url}", flush=True)
+
         self.browser.get(self.results_url)
         self.browser.implicitly_wait(3)
         self.req()
