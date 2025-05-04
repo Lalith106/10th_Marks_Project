@@ -6,8 +6,6 @@ import xml.etree.ElementTree as et
 import bs4 as bs
 import pandas as pd
 from datetime import datetime as dt
-from dotenv import load_dotenv
-import os
 from pathlib import Path
 import json
 
@@ -25,8 +23,11 @@ class marks:
         
 
     def initialize_browser(self):
-        options=Options()
-        options.add_argument("--start maximized")
+        options=webdriver.ChromeOptions()
+        options.add_argument("--headless")
+        options.add_argument("--no-sandbox")
+        options.add_argument("--disable-dev-shm-usage")
+
         self.browser = webdriver.Chrome(options=options)
         self.browser.get(self.results_url)
         self.browser.implicitly_wait(3)
