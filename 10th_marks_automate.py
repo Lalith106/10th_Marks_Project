@@ -18,6 +18,7 @@ class marks:
         
         self.lis1= secrets["HALL_TICKETS"]
         self.results_url =secrets["RESULTS_URL"]
+        print(self.results_url)
         self.lis2=[]
         self.initialize_browser()
         
