@@ -25,6 +25,9 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
+      - name: Test site accessibility
+        run: curl -I https://results.bse.ap.gov.in/RES25/
+
       - name: Set up Python 3.10
         uses: actions/setup-python@v5
         with:
