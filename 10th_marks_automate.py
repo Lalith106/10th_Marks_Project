@@ -8,6 +8,7 @@ import pandas as pd
 from datetime import datetime as dt
 from pathlib import Path
 import json
+import os
 
 class marks:
     def __init__(self):
@@ -17,7 +18,7 @@ class marks:
             secrets = json.load(f)
         
         self.lis1= secrets["HALL_TICKETS"]
-        self.results_url =secrets["RESULTS_URL"]
+        self.results_url =os.getenv("RESULTS_URL")
         print(self.results_url)
         self.lis2=[]
         self.initialize_browser()
@@ -31,10 +32,6 @@ class marks:
         options.add_argument("--no-sandbox")
         options.add_argument("--disable-dev-shm-usage")
 
-        
-
-        # self.browser = webdriver.Chrome(options=options)
-        # print(f"[INFO] Opening: {self.results_url}", flush=True)
 
         self.browser = webdriver.Chrome(options=options)
 
