@@ -30,15 +30,13 @@ class marks:
         options.add_argument("--disable-gpu")
         options.add_argument("--no-sandbox")
         options.add_argument("--disable-dev-shm-usage")
-        options.binary_location = "/usr/bin/google-chrome-stable"
 
         
 
         # self.browser = webdriver.Chrome(options=options)
         # print(f"[INFO] Opening: {self.results_url}", flush=True)
 
-        service = Service(executable_path="/usr/local/bin/chromedriver")
-        self.browser = webdriver.Chrome(service=service, options=options)
+        self.browser = webdriver.Chrome(options=options)
 
         self.browser.get(self.results_url)
         self.browser.implicitly_wait(10)
