@@ -40,16 +40,19 @@ jobs:
 
               echo "Chrome major version: $CHROME_VERSION"
 
-              # Get matching ChromeDriver version
-              DRIVER_VERSION=$(wget -qO- "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION")
+      - name: Install compatible ChromeDriver (136.x)
+        run: |
+              # Remove existing chromedriver
+              sudo rm -f /usr/local/bin/chromedriver
 
-              echo "Matching ChromeDriver version: $DRIVER_VERSION"
+              # Download compatible ChromeDriver for version 136.x
+              wget https://storage.googleapis.com/chrome-for-testing-public/136.0.7069.0/linux64/chromedriver-linux64.zip
+              unzip chromedriver-linux64.zip
 
-              # Download and install that ChromeDriver
-              wget https://chromedriver.storage.googleapis.com/${DRIVER_VERSION}/chromedriver_linux64.zip
-              unzip chromedriver_linux64.zip
-              sudo mv chromedriver /usr/local/bin/chromedriver
-              chmod +x /usr/local/bin/chromedriver
+              # Move it to a known path and set permissions
+              sudo mv chromedriver-linux64/chromedriver /usr/local/bin/chromedriver
+              sudo chmod +x /usr/local/bin/chromedriver
+              chromedriver --version
 
       # Install dependencies
       - name: Install dependencies
