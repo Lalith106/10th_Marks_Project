@@ -12,10 +12,6 @@ import os
 
 class marks:
     def __init__(self):
-        secrets_path = Path(__file__).parent / "secrets.json"
-
-        with open(secrets_path, "r") as f:
-            secrets = json.load(f)
         
         hall_tickets_env =os.getenv("HALL_TICKETS","[]")
         self.lis1 =json.loads(hall_tickets_env)
