@@ -1,6 +1,6 @@
 from time import sleep
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 import xml.etree.ElementTree as et
 import bs4 as bs
@@ -32,8 +32,11 @@ class marks:
         options.add_argument("--disable-dev-shm-usage")
         
 
-        self.browser = webdriver.Chrome(options=options)
-        print(f"[INFO] Opening: {self.results_url}", flush=True)
+        # self.browser = webdriver.Chrome(options=options)
+        # print(f"[INFO] Opening: {self.results_url}", flush=True)
+
+        service = Service(executable_path="/usr/local/bin/chromedriver")
+        self.browser = webdriver.Chrome(service=service, options=options)
 
         self.browser.get(self.results_url)
         self.browser.implicitly_wait(3)
