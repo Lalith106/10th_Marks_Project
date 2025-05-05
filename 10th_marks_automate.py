@@ -17,9 +17,10 @@ class marks:
         with open(secrets_path, "r") as f:
             secrets = json.load(f)
         
-        self.lis1= secrets["HALL_TICKETS"]
+        hall_tickets_env =os.getenv("HALL_TICKETS","[]")
+        self.lis1 =json.loads(hall_tickets_env)
         self.results_url =os.getenv("RESULTS_URL")
-        print(self.results_url)
+        print(self.results_url,self.lis1)
         self.lis2=[]
         self.initialize_browser()
         

@@ -21,6 +21,7 @@ jobs:
     runs-on: self-hosted
     env:
       RESULTS_URL: ${{ secrets.RESULTS_URL }}
+      HALL_TICKETS: ${{secrets.HALL_TICKETS}}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
